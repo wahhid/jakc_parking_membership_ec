@@ -1,0 +1,7 @@
+<openerp>
+    <data>
+        <!-- PARKING/MENU -->
+        <!-- MEMBERSHIP --> 		       
+        <menuitem id="park_membership_menu" name="Membership" parent="base.park_membership_menu"  action="action_park_membership" groups="base.group_parking_manager" sequence="1"/>
+    </data>
+</openerp>

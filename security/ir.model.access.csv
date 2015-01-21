@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_park_membership_line_manager,park.membership.line.manager,model_park_membership_line,base.group_parking_manager,1,1,1,1
+access_park_membership_line_officer,park.membership.line.officer,model_park_membership_line,base.group_parking_officer,1,1,1,0
+access_park_membership_line_operator,park.membership.line.operator,model_park_membership_line,base.group_parking_operator,1,1,1,0
+
+access_park_membership_line_payment_manager,park.membership.line.payment.manager,model_park_membership_line_payment,base.group_parking_manager,1,1,1,1
+access_park_membership_line_payment_officer,park.membership.line.payment.officer,model_park_membership_line_payment,base.group_parking_officer,1,1,1,0
+access_park_membership_line_payment_operator,park.membership.line.payment.operator,model_park_membership_line_payment,base.group_parking_operator,1,1,1,0

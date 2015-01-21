@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<openerp>
+    <data>
+        <!-- PARK/PARTNER -->		
+        <record model="ir.ui.view" id="view_park_membership_partner_inherited_form">
+            <field name="name">park.membership.partner.form</field>
+            <field name="model">res.partner</field>	
+            <field name="inherit_id" ref="base.view_partner_form"/>					            					
+            <field name="arch" type="xml">                            		
+                	<notebook position="inside">          
+                		<group>
+                			<field name="is_parking_member"/>
+                		</group>      		
+                		<page string="Parking">
+                			<field name="membership_detail_ids" widget="one2many_list" nolabel="1">
+                			</field>                			
+                		</page>
+                	</notebook>                	                
+            </field>
+        </record>
+		
+		
+        <record model="ir.ui.view" id="view_park_membership_partner_inherited_tree">
+            <field name="name">park.membership.partner.tree</field>
+            <field name="model">res.partner</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Member">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+		<record id="view_park_membership_partner_inherited_filter" model="ir.ui.view">
+            <field name="name">res.membership.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="priority">50</field>
+            <field name="arch" type="xml">
+                <search string="Membership">
+                    <filter icon="terp-personal" name="all_members" domain="[('is_parking_member', '=', 'True')]" string="Parking Members"/>
+                </search>
+            </field>
+        </record>
+
+		<!-- PARK/MEMBERSHIP LINE -->		
+        <record model="ir.ui.view" id="view_park_membership_line_form">
+            <field name="name">park.membership.line.form</field>
+            <field name="model">park.membership.line</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Membership Line" version="7.0">
+                	<group>
+                		<field name="plat_number"/>
+                		<field name="state"/>
+                	</group>
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_park_membership_line_tree">
+            <field name="name">park.membership.line.tree</field>
+            <field name="model">park.membership.line</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Membership Line">
+                    <field name="plat_number"/>
+                    <field name="state"/>                    
+                </tree>
+            </field>
+        </record>      
+                                            
+        <!-- PARK/ACTION -->
+        <!-- MEMBERSHIP -->
+        <record model="ir.actions.act_window" id="action_park_membership">
+            <field name="name">Membership</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_park_membership_partner_inherited_filter"/>
+            <field name="context">{"search_default_all_members": 1, "default_is_parking_member": True}</field>            
+        </record>
+        
+        <record model="ir.actions.act_window.view" id="action_park_membership_partner_inherited_tree" >
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_park_membership_partner_inherited_tree"/>
+                         			        
+            <field name="act_window_id" ref="action_park_membership"/>
+        </record>        
+        
+        <record model="ir.actions.act_window.view" id="action_park_membership_partner_inherited_form" >
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_park_membership_partner_inherited_form"/>
+            <field name="context">{"is_parking_member": True}</field>             		            		          
+            <field name="act_window_id" ref="action_park_membership"/>
+        </record>    		                                                                                                                                                                                                                                                                                                	                                                                                                                                                                                                                                                                                                     
+    </data>                
+    
+    
+</openerp>
